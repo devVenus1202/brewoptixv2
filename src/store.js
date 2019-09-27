@@ -36,12 +36,6 @@ export default new Vuex.Store({
       Api.getBrand(data.id)
         .then((res) => {
           context.commit('updateSelectedBrand', res.data)
-          console.log(res.data.replace(/\n/g, ''))
-          console.log(typeof res.data)
-          console.log(
-            'selectedBrand',
-            JSON.parse(res.data.replace(/\n/g, '').replace(/\t/g, ''))
-          )
         })
         .catch((e) => {
           console.log('error while get /brands/id', e)
