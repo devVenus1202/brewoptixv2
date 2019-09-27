@@ -15,7 +15,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/:id',
+      path: '/brand/:id',
       name: 'detail',
       component: Detail
     },

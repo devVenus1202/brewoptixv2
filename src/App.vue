@@ -30,7 +30,9 @@
       <router-view></router-view>
     </v-content>
     <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2019</span>
+      <span class="white--text">
+        dshulmin4@gmail.com
+      </span>
     </v-footer>
   </v-app>
 </template>
@@ -54,3 +56,9 @@ export default {
   }
 }
 </script>
+
+<style>
+a {
+  text-decoration: none;
+}
+</style>

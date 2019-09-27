@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <!-- <p>{{ selectedBrand }}</p> -->
     <div>
       <h1 class="display-3">
         {{ selectedBrand.name }}
