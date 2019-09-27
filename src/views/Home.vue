@@ -2,7 +2,18 @@
   <v-container>
     <v-layout>
       <v-flex v-for="brand in brands" :key="brand.user_id">
-        <p>{{ brand }}</p>
+        <v-card
+          max-width="344"
+          class="mx-auto"
+          @click="getBrandDetail(brand.entity_id)"
+        >
+          <v-card-title>{{ brand.name }}</v-card-title>
+
+          <v-card-text>
+            <span>The number of state registrations</span> :
+            <span>{{ brand.state_registrations.length }}</span>
+          </v-card-text>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -17,7 +28,11 @@ export default {
     ...mapGetters(['brands'])
   },
   methods: {
-    ...mapActions(['getBrands'])
+    ...mapActions(['getBrands']),
+    getBrandDetail(entityID) {
+      console.log('Brand Clicked ', entityID)
+      this.$router.push({ path: entityID })
+    }
   },
   mounted() {
     this.getBrands()

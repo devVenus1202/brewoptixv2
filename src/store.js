@@ -13,6 +13,9 @@ export default new Vuex.Store({
   mutations: {
     updateBrands(state, data) {
       state.brandsList = data
+    },
+    updateSelectedBrand(state, data) {
+      state.selectedBrand = data
     }
   },
   actions: {
@@ -26,16 +29,39 @@ export default new Vuex.Store({
         })
     },
     getBrand(context, data) {
-      Api.getBrand(data.id)
+      Api.getBrands()
         .then((res) => {
-          console.log('brand', res.data)
+          context.commit('updateBrands', res.data)
+          const selectedIndex = res.data.findIndex((item) => {
+            return item.entity_id === data.id
+          })
+          context.commit('updateSelectedBrand', res.data[selectedIndex])
         })
         .catch((e) => {
           console.log('error while get /brands/id', e)
         })
+
+      /***
+       * It seems that backed response is String
+       *
+       */
+      // Api.getBrand(data.id)
+      //   .then((res) => {
+      //     context.commit('updateSelectedBrand', res.data)
+      //     console.log(res.data.replace(/\n/g, ''))
+      //     console.log(typeof res.data)
+      //     console.log(
+      //       'selectedBrand',
+      //       JSON.parse(res.data.replace(/\n/g, '').replace(/\t/g, ''))
+      //     )
+      //   })
+      //   .catch((e) => {
+      //     console.log('error while get /brands/id', e)
+      //   })
     }
   },
   getters: {
-    brands: (state) => state.brandsList
+    brands: (state) => state.brandsList,
+    selectedBrand: (state) => state.selectedBrand
   }
 })
