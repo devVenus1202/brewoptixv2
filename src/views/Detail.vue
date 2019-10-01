@@ -24,15 +24,15 @@ export default {
   name: 'Detail',
   data: () => ({}),
   computed: {
-    ...mapGetters(['selectedBrand'])
+    ...mapGetters(['selectedBrand']),
   },
   mounted() {
     console.log('id', this.$route.params.id)
     this.getBrand({ id: this.$route.params.id })
   },
   methods: {
-    ...mapActions(['getBrand'])
-  }
+    ...mapActions(['getBrand']),
+  },
 }
 </script>
 

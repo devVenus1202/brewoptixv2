@@ -3,11 +3,7 @@
     <v-layout>
       <v-flex v-for="brand in brands" :key="brand.user_id">
         <router-link :to="{ name: 'detail', params: { id: brand.entity_id } }">
-          <v-card
-            max-width="344"
-            class="mx-auto"
-            @click="getBrandDetail(brand.entity_id)"
-          >
+          <v-card max-width="344" class="mx-auto" @click="getBrandDetail(brand.entity_id)">
             <v-card-title>{{ brand.name }}</v-card-title>
 
             <v-card-text>
@@ -27,17 +23,17 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data: () => ({}),
   computed: {
-    ...mapGetters(['brands'])
+    ...mapGetters(['brands']),
   },
   methods: {
     ...mapActions(['getBrands']),
     getBrandDetail(entityID) {
       console.log('Brand Clicked ', entityID)
       this.$router.push({ path: entityID })
-    }
+    },
   },
   mounted() {
     this.getBrands()
-  }
+  },
 }
 </script>

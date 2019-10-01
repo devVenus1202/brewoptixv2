@@ -30,9 +30,7 @@
       <router-view></router-view>
     </v-content>
     <v-footer color="indigo" app>
-      <span class="white--text">
-        dshulmin4@gmail.com
-      </span>
+      <span class="white--text">dshulmin4@gmail.com</span>
     </v-footer>
   </v-app>
 </template>
@@ -41,10 +39,10 @@
 export default {
   name: 'App',
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
   methods: {
     gotoHome() {
@@ -52,8 +50,8 @@ export default {
     },
     gotoAbout() {
       this.$router.push({ path: '/about' })
-    }
-  }
+    },
+  },
 }
 </script>
 

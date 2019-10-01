@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     brandsList: [],
-    selectedBrand: null
+    selectedBrand: null,
   },
   mutations: {
     updateBrands(state, data) {
@@ -16,15 +16,15 @@ export default new Vuex.Store({
     },
     updateSelectedBrand(state, data) {
       state.selectedBrand = data
-    }
+    },
   },
   actions: {
     getBrands(context) {
       Api.getBrands()
-        .then((res) => {
+        .then(res => {
           context.commit('updateBrands', res.data)
         })
-        .catch((e) => {
+        .catch(e => {
           console.log('error getting response for /brands', { e })
         })
     },
@@ -34,16 +34,16 @@ export default new Vuex.Store({
        *
        */
       Api.getBrand(data.id)
-        .then((res) => {
+        .then(res => {
           context.commit('updateSelectedBrand', res.data)
         })
-        .catch((e) => {
+        .catch(e => {
           console.log('error while get /brands/id', e)
         })
-    }
+    },
   },
   getters: {
-    brands: (state) => state.brandsList,
-    selectedBrand: (state) => state.selectedBrand
-  }
+    brands: state => state.brandsList,
+    selectedBrand: state => state.selectedBrand,
+  },
 })
